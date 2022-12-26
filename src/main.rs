@@ -30,5 +30,5 @@ fn main() {
 // 2. You get less floating-point trash using / than /=
 //   2a. With /= the fp trash starts at the 6th iteration
 //   2b. With / the fp trash doesn't start until the 23rd iteration
-//   2c. But... fp precision is hardware, not software. See main.c
-//   2d. I'm not sure why the denominator calculation is overflowing...
+//   2c I'm not sure why the denominator calculation is overflowing...
+// 3. Note that fp precision is hardware, not software. See main.c
