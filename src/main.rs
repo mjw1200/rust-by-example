@@ -1,19 +1,25 @@
+extern crate sort;
+
 use rand::{Rng};
+use sort::bubble_sort;
+use sort::quicksort;
+use chrono;
 
 fn main() {
-    const ELEMENTS:usize = 1000;
+    const ELEMENTS:usize = 10000;
     const HIGH:u32 = 100;
 
-    let mut occurs = [0; HIGH as usize];
+    let mut data = [0u32; ELEMENTS];
 
     let mut rng = rand::thread_rng();
 
-    for _ in 1..ELEMENTS {
-        let val = rng.gen_range(0..HIGH);
-        occurs[val as usize] += 1;
+    for i in 1..ELEMENTS {
+        data[i] = rng.gen_range(0..HIGH);
     }
+    
+    let start = chrono::offset::Utc::now();
+    quicksort(&mut data);
+    let stop = chrono::offset::Utc::now();
 
-    for i in 0..HIGH {
-        println!("{}: {}", i, occurs[i as usize]);
-    }
+    println!("Sort took {}", stop - start);
 }
