@@ -10,6 +10,13 @@ fn reverse(pair: (i32, bool)) -> (bool, i32) {
     (bool_param, int_param)
 }
 
+fn transpose(trix: Matrix) -> Matrix {
+    let a = trix.1;
+    let b = trix.2;
+
+    Matrix(trix.0, b, a, trix.3)
+}
+
 // The following struct is for the activity.
 #[derive(Debug)]
 struct Matrix(f32, f32, f32, f32);
@@ -26,13 +33,18 @@ impl fmt::Display for Matrix {
 }
 
 fn main() {
-    let trix = Matrix (1.1, 1.2, 2.1, 2.2);
-    println!("{}", trix);
+    // Exercise 1
+    let may_tricks = Matrix (1.1, 1.2, 2.1, 2.2);
+    println!("{}", may_tricks); // fmt::Display trait
     println!();
-    println!("{:?}", trix);
+    // println!("{:?}", trix); // debug format  
+
+    // Exercise 2
+    println!("{}", transpose(may_tricks));
 }
 
-fn main2() {
+// The "main" supplied by RBE2.2. Apparently, Rust convention prefers snake case?
+fn oob_main() {
     // A tuple with a bunch of different types
     let long_tuple = (1u8, 2u16, 3u32, 4u64,
                       -1i8, -2i16, -3i32, -4i64,
